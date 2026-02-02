@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Fit Pune | Premium Gym & Fitness Center</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #FF5E14; /* Action Orange */
+            --secondary: #111111; /* Deep Black */
+            --accent: #222222; /* Card Gray */
+            --text-light: #FFFFFF;
+            --text-dim: #A0A0A0;
+            --success: #25D366; /* WhatsApp Green */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--secondary);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Utility Classes */
+        .container { padding: 0 20px; max-width: 1200px; margin: 0 auto; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s;
+            cursor: pointer;
+            border: none;
+            gap: 8px;
+        }
+        .btn:active { transform: scale(0.95); }
+        .btn-primary { background-color: var(--primary); color: white; }
+        .btn-whatsapp { background-color: var(--success); color: white; }
+        .section-title { font-size: 2rem; margin-bottom: 30px; text-align: center; font-weight: 800; text-transform: uppercase; }
+
+        /* Sticky Header & Action Bar */
+        header {
+            background: rgba(17, 17, 17, 0.95);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--accent);
+        }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+        .logo-box { display: flex; align-items: center; gap: 10px; }
+        .logo-img { width: 40px; height: 40px; border-radius: 8px; }
+        .brand-name { font-weight: 800; font-size: 1.2rem; color: var(--primary); }
+
+        .sticky-actions {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 999;
+            width: 90%;
+            max-width: 400px;
+        }
+        .sticky-btn { flex: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.3); font-size: 0.9rem; }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .hero h1 { font-size: 2.8rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800; }
+        .hero p { color: var(--text-dim); font-size: 1.1rem; margin-bottom: 30px; }
+
+        /* Services */
+        .services { padding: 60px 0; background: var(--secondary); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card {
+            background: var(--accent);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+        .card:hover { border-color: var(--primary); }
+        .card i { color: var(--primary); margin-bottom: 15px; }
+        .card h3 { margin-bottom: 10px; }
+
+        /* Lead Form */
+        .lead-section { padding: 60px 0; background: #1a1a1a; }
+        .form-container {
+            background: var(--accent);
+            padding: 30px;
+            border-radius: 24px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-size: 0.9rem; color: var(--text-dim); }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 15px;
+            background: #333;
+            border: 1px solid #444;
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        /* Why Choose Us */
+        .why-us { padding: 60px 0; }
+        .check-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .check-item { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; }
+        .check-item i { color: var(--primary); flex-shrink: 0; }
+
+        /* Testimonials */
+        .testimonials { padding: 60px 0; background: var(--secondary); }
+        .testimonial-card { background: var(--accent); padding: 25px; border-radius: 15px; font-style: italic; position: relative; }
+        .user-info { margin-top: 15px; font-style: normal; font-weight: 700; color: var(--primary); }
+
+        /* Contact & Map */
+        .contact { padding: 60px 0; }
+        .map-container {
+            width: 100%;
+            height: 350px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid var(--accent);
+            margin-top: 30px;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            filter: grayscale(1) invert(0.9) contrast(1.2); /* Dark mode map effect */
+        }
+
+        /* Footer */
+        footer { padding: 60px 20px 120px; text-align: center; border-top: 1px solid var(--accent); }
+        .footer-tagline { color: var(--text-dim); margin-bottom: 10px; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .check-list { grid-template-columns: 1fr; }
+            .map-container { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Header -->
+    <header>
+        <div class="container">
+            <div class="nav-flex">
+                <div class="logo-box">
+                    <img src="https://via.placeholder.com/100/FF5E14/FFFFFF?text=UF" alt="Urban Fit" class="logo-img">
+                    <span class="brand-name">URBAN FIT</span>
+                </div>
+                <!-- Updated tel: link with + prefix -->
+                <a href="tel:+916201840860" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.8rem;">
+                    <i data-lucide="phone"></i> CALL
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sticky Mobile Actions -->
+    <div class="sticky-actions">
+        <a href="tel:+916201840860" class="btn btn-primary sticky-btn">
+            <i data-lucide="phone-call"></i> Call Now
+        </a>
+        <a href="https://wa.me/916201840860?text=Hi Rahul, I want to join Urban Fit Pune. Please share membership details." class="btn btn-whatsapp sticky-btn">
+            <i data-lucide="message-circle"></i> WhatsApp
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Transform Your Body, Elevate Your Life In Pune</h1>
+            <p>Premium fitness equipment, certified trainers, and a community that pushes you further. Start your journey with Rahul at Urban Fit today.</p>
+            <a href="#join" class="btn btn-whatsapp">
+                <i data-lucide="send"></i> JOIN NOW ON WHATSAPP
+            </a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="grid">
+                <div class="card">
+                    <i data-lucide="dumbbell" size="40"></i>
+                    <h3>General Gym</h3>
+                    <p>Modern strength and cardio machines for all fitness levels.</p>
+                </div>
+                <div class="card">
+                    <i data-lucide="user-check" size="40"></i>
+                    <h3>Personal Training</h3>
+                    <p>1-on-1 coaching designed specifically for your body goals.</p>
+                </div>
+                <div class="card">
+                    <i data-lucide="trending-down" size="40"></i>
+                    <h3>Weight Loss</h3>
+                    <p>Structured diet plans and HIIT sessions to burn fat fast.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us">
+        <div class="container">
+            <h2 class="section-title">Why Choose Urban Fit?</h2>
+            <ul class="check-list">
+                <li class="check-item"><i data-lucide="check-circle"></i> Certified Professional Trainers</li>
+                <li class="check-item"><i data-lucide="check-circle"></i> Affordable Premium Plans</li>
+                <li class="check-item"><i data-lucide="check-circle"></i> Open 7 Days a Week</li>
+                <li class="check-item"><i data-lucide="check-circle"></i> Advanced Imported Equipment</li>
+                <li class="check-item"><i data-lucide="check-circle"></i> Clean & Hygienic Environment</li>
+                <li class="check-item"><i data-lucide="check-circle"></i> Located in Heart of Pune</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Lead Form Section -->
+    <section class="lead-section" id="join">
+        <div class="container">
+            <h2 class="section-title">Get a Free Trial</h2>
+            <div class="form-container">
+                <form id="whatsappForm">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" id="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="phone" placeholder="Enter mobile number" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Select Program</label>
+                        <select id="program">
+                            <option value="General Membership">General Membership</option>
+                            <option value="Personal Training">Personal Training</option>
+                            <option value="Weight Loss Program">Weight Loss Program</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-whatsapp" style="width: 100%;">
+                        CLAIM FREE PASS ON WHATSAPP
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Member Stories</h2>
+            <div class="grid">
+                <div class="testimonial-card">
+                    "Best gym in Pune! Rahul sir is very helpful. I lost 5kg in just 2 months with their training."
+                    <div class="user-info">- Amit Sharma</div>
+                </div>
+                <div class="testimonial-card">
+                    "The equipment is brand new and the crowd is very professional. Highly recommended for beginners."
+                    <div class="user-info">- Priya Deshmukh</div>
+                </div>
+                <div class="testimonial-card">
+                    "Superb atmosphere and very affordable compared to other luxury gyms in the area."
+                    <div class="user-info">- Rohan K.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section with Live Map -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title">Find Us</h2>
+            <div style="text-align: center;">
+                <p style="margin-bottom: 10px;"><i data-lucide="map-pin" style="color: var(--primary); vertical-align: middle;"></i> Pune, Maharashtra, India</p>
+                <p><i data-lucide="phone" style="color: var(--primary); vertical-align: middle;"></i> <a href="tel:+916201840860" style="color: white; text-decoration: none;">+91 6201840860</a></p>
+            </div>
+            
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121059.0344739699!2d73.78980229864703!3d18.52489042245244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e6741e101%3A0x8288865ad72bb595!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    frameborder="0">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3>URBAN FIT</h3>
+            <p class="footer-tagline">Your Fitness, Our Mission.</p>
+            <p style="font-size: 0.8rem; color: var(--text-dim);">&copy; 2024 Urban Fit Pune. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Form Logic
+        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const program = document.getElementById('program').value;
+            const businessNumber = "916201840860";
+            
+            const message = `Hi Urban Fit, I'm interested in joining.%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Program:* ${program}%0A%0APlease call me back with more details.`;
+            
+            window.open(`https://wa.me/${businessNumber}?text=${message}`, '_blank');
+        });
+    </script>
+</body>
+</html>
